@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RVA Portfolio | Jeff R. Mintal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-color: #777777;
+            --light-gray: #f9f9f9;
+            --border: #eeeeee;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Cover Page */
+        header {
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .school-logo {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .school-logo img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            color: var(--accent-color);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        /* Social Icons */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .socials a {
+            color: var(--text-color);
+            font-size: 1.4rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .socials a:hover {
+            color: #007bff; /* Slight blue hint for IT feel */
+            transform: translateY(-5px);
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        section {
+            margin-bottom: 140px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--text-color);
+            margin: 15px auto 0;
+        }
+
+        /* Artist Statement */
+        .statement-text {
+            font-size: 1.1rem;
+            color: #333;
+            text-align: justify;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Module Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .card-img-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: var(--light-gray);
+            margin-bottom: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.08);
+        }
+
+        .card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 0.5px;
+        }
+
+        /* Swipe Gallery (6 Images) */
+        .gallery-wrapper {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .swipe-gallery {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .swipe-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-item {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            background-color: var(--light-gray);
+        }
+
+        @media (min-width: 768px) {
+            .gallery-item {
+                flex: 0 0 70%;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid var(--border);
+            color: #aaa;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="top">
+        <div class="school-logo">
+            <img src="logo.png" alt="School Logo">
+        </div>
+        <div class="hero">
+            <h1>Jeff R. Mintal</h1>
+            <p>BSIT | Block D</p>
+            <p>Reading Visual Arts Portfolio</p>
+            
+            <div class="socials">
+                <a href="https://www.facebook.com/profile.php?id=61576499230568" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/itzjeffu?igsh=MXJlNmRldDI2dzBxOA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:jeffmintal6@email.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#statement">Artist Statement</a>
+        <a href="#modules">Module Outputs</a>
+        <a href="#process">Process</a>
+    </nav>
+
+    <div class="container">
+        
+        <section id="statement">
+            <h2>Artist Statement</h2>
+            <div class="statement-text">
+                ​       As a student of Information Technology, I have always perceived the world through the lens of structure, logic, and functional design. However, my journey through the Reading Visual Arts (RVA) course has challenged me to look beyond the "code" of an image and explore the emotional and cultural narratives that visual media can convey. This portfolio is a curated collection of my growth, representing a transition from a purely analytical mindset to one that embraces creative expression.
+                <br>
+                <br>
+​        In these modules, I explored how the seven elements of art serve as the fundamental building blocks of communication—much like syntax in a programming language. From the rhythmic complexity of Filipino-inspired patterns to the storytelling power of photo narratives, I have learned that art is not merely an aesthetic endeavor but a vital tool for human connection. My work often reflects a minimalist and professional aesthetic, aiming for clarity and balance. By integrating my technical background with artistic principles, I strive to create visuals that are both purposeful and evocative, proving that the digital and creative worlds are not separate, but are two sides of the same communicative coin.
+            </div>
+        </section>
+
+        <section id="modules">
+            <h2>Module Outputs</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod1.jpg" alt="Module 1" class="card-img">
+                    </div>
+                    <h3>Module 1: Digital Visual World Collage</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod2.jpg" alt="Module 2" class="card-img">
+                    </div>
+                    <h3>Module 2: Observational Drawing (7 Elements)</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod3.jpg" alt="Module 3" class="card-img">
+                    </div>
+                    <h3>Module 3: Abstract Composition</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod4.jpg" alt="Module 4" class="card-img">
+                    </div>
+                    <h3>Module 4: Transformation Series (3 versions)</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod5.jpg" alt="Module 5" class="card-img">
+                    </div>
+                    <h3>Module 5: Filipino-Inspired Pattern Design</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod6.jpg" alt="Module 6" class="card-img">
+                    </div>
+                    <h3>Module 6-7: Drawing or Painting Artwork</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod8.png" alt="Module 8" class="card-img">
+                    </div>
+                    <h3>Module 8: Digital Poster</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod9.png" alt="Module 9" class="card-img">
+                    </div>
+                    <h3>Module 9: Photo Narrative Series (3 photos)</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod10.png" alt="Module 10" class="card-img">
+                    </div>
+                    <h3>Module 10: Infographic (IT Topic)</h3>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="mod11.jpeg" alt="Module 11" class="card-img">
+                    </div>
+                    <h3>Module 11: Meme Series Creation</h3>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="process">
+            <h2>Process Documentation</h2>
+            <div class="gallery-wrapper">
+                <div class="swipe-gallery">
+                    <div class="gallery-item"><img src="numba6.jpg" class="gallery-img" alt="Process 1"></div>
+                    <div class="gallery-item"><img src="numba2.jpg" class="gallery-img" alt="Process 2"></div>
+                    <div class="gallery-item"><img src="numba3.jpg" class="gallery-img" alt="Process 3"></div>
+                    <div class="gallery-item"><img src="numba4.jpg" class="gallery-img" alt="Process 4"></div>
+                    <div class="gallery-item"><img src="numba1.jpg" class="gallery-img" alt="Process 5"></div>
+                    <div class="gallery-item"><img src="numba5.jpg" class="gallery-img" alt="Process 6"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                    <span style="font-size: 0.65rem; color: #aaa; letter-spacing: 1px;">&larr; SWIPE LEFT/RIGHT</span>
+                    <span style="font-size: 0.65rem; color: #aaa; letter-spacing: 1px;">ITERATIONS 01-06</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Jeff R. Mintal | BSIT Block D | Reading Visual Arts
+    </footer>
+
+</body>
+</html>
