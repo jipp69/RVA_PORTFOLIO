@@ -242,6 +242,42 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+
+/* Table of Contents Styling */
+.toc-section {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+.toc-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.toc-container h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.toc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+.toc-link {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 0.9rem;
+}
+.toc-dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted #ccc;
+    margin: 0 10px;
+}
+        
+        
     </style>
 </head>
 <body>
@@ -263,6 +299,28 @@
         </div>
     </header>
 
+<div class="toc-section">
+    <div class="toc-container">
+        <h3>Table of Contents</h3>
+        <div class="toc-item">
+            <a href="#statement" class="toc-link">Artist Statement</a>
+            <div class="toc-dots"></div>
+            <span>01</span>
+        </div>
+        <div class="toc-item">
+            <a href="#modules" class="toc-link">Module Outputs</a>
+            <div class="toc-dots"></div>
+            <span>02</span>
+        </div>
+        <div class="toc-item">
+            <a href="#process" class="toc-link">Process Documentation</a>
+            <div class="toc-dots"></div>
+            <span>03</span>
+        </div>
+    </div>
+</div>
+    
+    
     <nav>
         <a href="#statement">Artist Statement</a>
         <a href="#modules">Module Outputs</a>
